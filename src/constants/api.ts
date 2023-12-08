@@ -17,12 +17,14 @@ interface Scammer {
     ru: ScammerLangData;
 }
 
+const basePath = "/scammers-by";
+
 const scammers: Scammer[] = [
     {
         common: {
             birthYear: 1955,
             deathYear: 2018,
-            imgUrl: "/mavrodi.jpg",
+            imgUrl: basePath + "/mavrodi.jpg",
             galleryUrls: ["", ""],
             videoUrl: ""
         },
@@ -49,7 +51,7 @@ const scammers: Scammer[] = [
         common: {
             birthYear: 1948,
             deathYear: undefined,
-            imgUrl: "/abagnale.png",
+            imgUrl: basePath + "/abagnale.png",
             galleryUrls: ["", ""],
             videoUrl: ""
         },
@@ -70,7 +72,7 @@ const scammers: Scammer[] = [
         common: {
             birthYear: 1846,
             deathYear: 1902,
-            imgUrl: "/sofia_golden_hand.jpg",
+            imgUrl: basePath + "/sofia_golden_hand.jpg",
             galleryUrls: ["", ""],
             videoUrl: ""
         },

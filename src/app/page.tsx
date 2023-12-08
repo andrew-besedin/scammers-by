@@ -58,8 +58,8 @@ function Home() {
                         className={styles["home__scammer-card"]}
                     >
                         <Image
-                            width={1000}
-                            height={1000}
+                            width={500}
+                            height={500}
                             src={scammers[dayScammerId].common.imgUrl}
                             alt="photo"
                         />

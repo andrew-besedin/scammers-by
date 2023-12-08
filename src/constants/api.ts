@@ -51,7 +51,7 @@ const scammers: Scammer[] = [
         common: {
             birthYear: 1948,
             deathYear: undefined,
-            imgUrl: basePath + "/abagnale.png",
+            imgUrl: basePath + "/abagnale.jpg",
             galleryUrls: ["", ""],
             videoUrl: ""
         },

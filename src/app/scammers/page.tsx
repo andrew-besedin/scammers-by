@@ -24,8 +24,8 @@ function Scammers() {
                 className={styles.scammers__card}
             >
                 <Image 
-                    width={1000}
-                    height={1000}
+                    width={500}
+                    height={500}
                     src={scammer.common.imgUrl}
                     alt="scammer_photo"
                 />

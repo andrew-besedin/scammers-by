@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.3s;
+}
+
+main {
+    padding: 50px 100px;
+
+    @media screen and (max-width: 550px) {
+        padding: 50px 30px;
+    }
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+h1 {
+    font-size:40px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+h3 {
+    font-size: 28px;
+}
+
+h4 {
+    font-size: 24px;
+}

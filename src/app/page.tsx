@@ -1,95 +1,105 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client"
+import Header from '@/components/default/Header/Header';
+import styles from './page.module.scss';
+import { Button, Card } from '@mui/material';
+import content from '@/constants/content';
+import useLang from './hooks/useLang';
+import scammers from '@/constants/api';
+import Image, { StaticImageData } from 'next/image';
+import { useState } from 'react';
+import firstDevImg from "@/assets/UI/andrewprog.jpg";
+import secondDevImg from "@/assets/UI/antonprog.jpg";
+import thirdDevImg from "@/assets/UI/sidorovich.jpg";
+import Link from 'next/link';
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+function Home() {
+    const lang = useLang();
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+    const [dayScammerId, setDayScammerId] = useState<number>(0);
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+    function DevCard(props: { img: StaticImageData; name: string; githubTag: string; githubLink: string }) {
+        const {
+            img,
+            name,
+            githubLink, 
+            githubTag
+        } = props;
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+        return (
+            <Card
+                variant="outlined"
+                className={styles["home__developers-card"]}
+            >
+                <Image 
+                    src={img}
+                    alt='developer'
+                />
+                <div>
+                    <h4>{name}</h4>
+                    <Link 
+                        href={githubLink}
+                        target='_blank'
+                    >
+                        @{githubTag}
+                    </Link>
+                </div>
+            </Card>
+        )
+    }
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    return (
+        <>
+            <Header />
+            <main className={styles.main}>
+                <div className={styles["home__scammer"]}>
+                    <h2>{content[lang].home.scammerOfDayTitle}</h2>
+                    <Card 
+                        variant="outlined" 
+                        className={styles["home__scammer-card"]}
+                    >
+                        <Image
+                            width={1000}
+                            height={1000}
+                            src={scammers[0].common.imgUrl}
+                            alt="photo"
+                        />
+                        <div>
+                            <div>
+                                <h3>{scammers[dayScammerId][lang].name}</h3>
+                                <p>{scammers[dayScammerId].common.birthYear} - {scammers[dayScammerId].common.deathYear}</p>
+                                <p>{scammers[dayScammerId][lang].biography}</p>
+                            </div>
+                            <Button variant="outlined" >{content[lang].common.goToPage}</Button>
+                        </div>
+                    </Card>
+                </div>
+                <div className={styles["home__developers"]}>
+                    <h2>{content[lang].home.developersTitle}</h2>
+                    <div className={styles["home__developers_cards"]}>
+                        <DevCard 
+                            img={firstDevImg}
+                            name='Andrei Besedin'
+                            githubTag='andrew-besedin'
+                            githubLink='https://github.com/andrew-besedin'
+                        />
+                        
+                        <DevCard 
+                            img={secondDevImg}
+                            name='Anton Besedin'
+                            githubTag='antonprog97'
+                            githubLink='https://github.com/antonprog97'
+                        />
+                        <DevCard 
+                            img={thirdDevImg}
+                            name='Roman Sidor Ovich'
+                            githubTag='RomanSidorovich'
+                            githubLink='https://github.com/RomanSidorovich'
+                        />
+                    </div>
+                </div>
+            </main>
+        </> 
+    )
 }
+
+export default Home;

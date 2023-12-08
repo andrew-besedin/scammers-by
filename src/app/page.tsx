@@ -15,7 +15,7 @@ import Link from 'next/link';
 function Home() {
     const lang = useLang();
 
-    const [dayScammerId, setDayScammerId] = useState<number>(0);
+    const [dayScammerId, setDayScammerId] = useState<number>(2);
 
     function DevCard(props: { img: StaticImageData; name: string; githubTag: string; githubLink: string }) {
         const {
@@ -60,16 +60,16 @@ function Home() {
                         <Image
                             width={1000}
                             height={1000}
-                            src={scammers[0].common.imgUrl}
+                            src={scammers[dayScammerId].common.imgUrl}
                             alt="photo"
                         />
                         <div>
                             <div>
                                 <h3>{scammers[dayScammerId][lang].name}</h3>
-                                <p>{scammers[dayScammerId].common.birthYear} - {scammers[dayScammerId].common.deathYear}</p>
+                                <p>{scammers[dayScammerId].common.birthYear} - {scammers[dayScammerId].common.deathYear || content[lang].common.present}</p>
                                 <p>{scammers[dayScammerId][lang].biography}</p>
                             </div>
-                            <Button variant="outlined" >{content[lang].common.goToPage}</Button>
+                            <Button variant="outlined">{content[lang].common.goToPage}</Button>
                         </div>
                     </Card>
                 </div>

@@ -6,6 +6,11 @@
     transition: all 0.3s;
 }
 
+body {
+    max-width: 2200px;
+    margin: 0 auto;
+}
+
 main {
     padding: 50px 100px;
 
@@ -41,4 +46,8 @@ h3 {
 
 h4 {
     font-size: 24px;
+}
+
+h5 {
+    font-size: 20px;
 }

@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.3s;
+}
+
+body {
+    max-width: 2200px;
+    margin: 0 auto;
+    transition: none;
+    display: flex;
+    flex-direction: column;
+    background: rgb(255,255,255);
+    background: linear-gradient(135deg, rgba(255,255,255,1) 28%, rgba(0,0,0,0.06775210084033612) 71%);
+}
+
+main {
+    padding: 50px 100px;
+
+    @media screen and (max-width: 550px) {
+        padding: 50px 30px;
+    }
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+h1 {
+    font-size:40px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+h3 {
+    font-size: 28px;
+}
+
+h4 {
+    font-size: 24px;
+}
+
+h5 {
+    font-size: 20px;
+}

@@ -1,5 +1,5 @@
 "use client"
-import Header from "@/components/default/Header/Header";
+
 import { Button, Card, Input } from "@mui/material";
 import styles from "@/styles/Scammers.module.scss";
 import scammers, { Scammer } from "@/constants/api";
@@ -44,12 +44,11 @@ function Scammers() {
 
     return (
         <>
-            <Header />
             <main className={styles.main}>
                 <div className={styles.scammers__search}>
                     <h2>{content[lang].scammers.scammersTitle}</h2>
                     <Input 
-                        placeholder="Фильтр" 
+                        placeholder={content[lang].scammers.searchPlaceholder} 
                         value={filter}
                         onChange={e => setFilter(e.currentTarget.value)}
                     />

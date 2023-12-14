@@ -6,6 +6,8 @@
     .scammers__search {
         display: flex;
         justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
 
         > :last-child {
             width: 300px;

@@ -1,12 +1,11 @@
 "use client"
-import Header from '@/components/default/Header/Header';
-import styles from './page.module.scss';
+
+import styles from "@/styles/Home.module.scss";
 import { Button, Card } from '@mui/material';
 import content from '@/constants/content';
 import useLang from './hooks/useLang';
 import scammers from '@/constants/api';
 import Image, { StaticImageData } from 'next/image';
-import { useState } from 'react';
 import firstDevImg from "@/assets/UI/andrewprog.jpg";
 import secondDevImg from "@/assets/UI/antonprog.jpg";
 import thirdDevImg from "@/assets/UI/sidorovich.jpg";
@@ -15,7 +14,9 @@ import Link from 'next/link';
 function Home() {
     const lang = useLang();
 
-    const [dayScammerId, setDayScammerId] = useState<number>(2);
+    const dayScammerId = (new Date()).getDate() % scammers.length;
+
+    const scammerOfDay = scammers[dayScammerId];
 
     function DevCard(props: { img: StaticImageData; name: string; githubTag: string; githubLink: string }) {
         const {
@@ -49,7 +50,6 @@ function Home() {
 
     return (
         <>
-            <Header />
             <main className={styles.main}>
                 <div className={styles["home__scammer"]}>
                     <h2>{content[lang].home.scammerOfDayTitle}</h2>
@@ -60,16 +60,19 @@ function Home() {
                         <Image
                             width={500}
                             height={500}
-                            src={scammers[dayScammerId].common.imgUrl}
+                            src={scammerOfDay.common.imgUrl}
                             alt="photo"
                         />
                         <div>
                             <div>
-                                <h3>{scammers[dayScammerId][lang].name}</h3>
-                                <p>{scammers[dayScammerId].common.birthYear} - {scammers[dayScammerId].common.deathYear || content[lang].common.present}</p>
-                                <p>{scammers[dayScammerId][lang].biography}</p>
+                                <h3>{scammerOfDay[lang].name}</h3>
+                                <p>{scammerOfDay.common.birthYear} - {scammerOfDay.common.deathYear || content[lang].common.present}</p>
+                                <p>{scammerOfDay[lang].biography}</p>
                             </div>
-                            <Button variant="outlined">{content[lang].common.goToPage}</Button>
+                            <Link href={`/scammer/${dayScammerId}`}>
+                                <Button variant="outlined">{content[lang].common.goToPage}</Button>
+                            </Link>
+                            
                         </div>
                     </Card>
                 </div>

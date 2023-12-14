@@ -9,6 +9,11 @@
 body {
     max-width: 2200px;
     margin: 0 auto;
+    transition: none;
+    display: flex;
+    flex-direction: column;
+    background: rgb(255,255,255);
+    background: linear-gradient(135deg, rgba(255,255,255,1) 28%, rgba(0,0,0,0.06775210084033612) 71%);
 }
 
 main {

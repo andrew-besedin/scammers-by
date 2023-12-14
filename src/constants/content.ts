@@ -10,10 +10,16 @@ interface Content {
     },
     scammers: {
         scammersTitle: string;
+        searchPlaceholder: string;
     },
     header: {
         mainPage: string;
         scammersPage: string;
+    },
+    scammer: {
+        galleryLabel: string;
+        videoLabel: string;
+        mapLabel: string;
     }
 }
 
@@ -29,12 +35,18 @@ const content: { [lang: string]: Content } = {
             developersTitle: "Our developers"
         },
         scammers: {
-            scammersTitle: "Scammers"
+            scammersTitle: "Scammers",
+            searchPlaceholder: "Filter"
         },
         header: {
             mainPage: "Main",
             scammersPage: "Scammers"
         },
+        scammer: {
+            galleryLabel: "Gallery",
+            videoLabel: "Video",
+            mapLabel: "Place of actions"
+        }
     },
     ru: {
         common: {
@@ -47,11 +59,17 @@ const content: { [lang: string]: Content } = {
             developersTitle: "Наши разработчики"
         },
         scammers: {
-            scammersTitle: "Мошенники"
+            scammersTitle: "Мошенники",
+            searchPlaceholder: "Фильтр"
         },
         header: {
             mainPage: "Главная",
             scammersPage: "Мошенники"
+        },
+        scammer: {
+            galleryLabel: "Галерея",
+            videoLabel: "Видеофрагмент",
+            mapLabel: "Место деятельности на карте"
         }
     }
 }
